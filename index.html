@@ -84,18 +84,30 @@
             margin: 20px auto;
             overflow-y: scroll;
         }
-        .clear-result {
+        .clear-result, .confirm-movie {
             display: none;
-            margin-top: 20px;
+            margin-top: 10px;
             padding: 10px 20px;
             background-color: #555;
             color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            width: 200px;
+            text-align: center;
+            font-size: 20px;
         }
-        .clear-result:hover {
+
+        .clear-result:hover, .confirm-movie:hover {
             background-color: #777;
+        }
+
+        .confirm-movie {
+            background-color: #4CAF50;
+        }
+
+        .confirm-movie:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
@@ -110,10 +122,9 @@
             </button>
         </div>
         <div class="result" id="result">
-            <button onclick="clearResult()" id="clear-result" class="clear-result">Убрать результат</button> 
+            <button onclick="clearResult()" id="clear-result" class="clear-result">Убрать результат</button>
+            <button onclick="confirmMovie()" id="confirm-movie" class="confirm-movie">Это тот Фильм</button>
         </div>
-
-        
     </div>
     <button onclick="topFunction()" id="scroll-top" class="scroll-top">▲ Наверх</button>
     <script src="script.js"></script>

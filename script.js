@@ -2,6 +2,7 @@ async function searchMovie() {
     const query = document.getElementById('search-input').value;
     const resultDiv = document.getElementById('result');
     const clearButton = document.getElementById('clear-result');
+    const confirmButton = document.getElementById('confirm-movie');
 
     resultDiv.innerHTML = '';
 
@@ -55,11 +56,11 @@ async function searchMovie() {
                 titleElement.style.color = 'white';
                 resultDiv.appendChild(titleElement);
                 
-                clearButton.style.textAlign = 'center';
-                clearButton.style.marginTop = '10px';
-                clearButton.style.fontSize = '20px';
                 clearButton.style.display = 'inline-block';
+                confirmButton.style.display = 'inline-block';
+                confirmButton.style.marginTop = '55px';
                 resultDiv.appendChild(clearButton);
+                resultDiv.appendChild(confirmButton);
             } else {
                 resultDiv.textContent = movieTitle + '\nИзображение не найдено.';
             }
@@ -75,7 +76,14 @@ async function searchMovie() {
 function clearResult() {
     const resultDiv = document.getElementById('result');
     const clearButton = document.getElementById('clear-result');
+    const confirmButton = document.getElementById('confirm-movie');
 
     resultDiv.innerHTML = '';
     clearButton.style.display = 'none';
+    confirmButton.style.display = 'none';
+}
+
+function confirmMovie() {
+    alert('Спасибо за ответ!');
+    clearResult();
 }
