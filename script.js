@@ -1,8 +1,10 @@
 async function searchMovie() {
     const query = document.getElementById('search-input').value;
     const resultDiv = document.getElementById('result');
+    const clearButton = document.getElementById('clear-result');
 
     resultDiv.innerHTML = '';
+    clearButton.style.display = 'none';
 
     if (!query) {
         resultDiv.textContent = 'Пожалуйста, введите описание фильма.';
@@ -32,7 +34,7 @@ async function searchMovie() {
         const movieTitle = data.choices[0].message.content.trim();
         
         if (movieTitle) {
-            const imageResponse = await fetch(`https://www.googleapis.com/customsearch/v1?q=${movieTitle} фильм обложка &cx=f1e9e03ecbb864730&searchType=image&key=AIzaSyBNVGYjmzOAsMRAgxmRPraxvDQvDmDP90E`);
+            const imageResponse = await fetch(`https://www.googleapis.com/customsearch/v1?q=${movieTitle} фильм обложка&cx=f1e9e03ecbb864730&searchType=image&key=AIzaSyBNVGYjmzOAsMRAgxmRPraxvDQvDmDP90E`);
             const imageData = await imageResponse.json();
             resultDiv.textContent = 'Найдено:';
             
@@ -53,6 +55,8 @@ async function searchMovie() {
                 titleElement.style.fontSize = '20px';
                 titleElement.style.color = 'white';
                 resultDiv.appendChild(titleElement);
+                
+                clearButton.style.display = 'block'; // Показать кнопку "Убрать результат"
             } else {
                 resultDiv.textContent = movieTitle + '\nИзображение не найдено.';
             }
@@ -63,4 +67,12 @@ async function searchMovie() {
         resultDiv.textContent = 'Произошла ошибка при поиске фильма.';
         console.error('Error:', error);
     }
+}
+
+function clearResult() {
+    const resultDiv = document.getElementById('result');
+    const clearButton = document.getElementById('clear-result');
+
+    resultDiv.innerHTML = '';
+    clearButton.style.display = 'none';
 }
