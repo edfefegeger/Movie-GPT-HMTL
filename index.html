@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск фильма</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            max-height: 160vh;
+            background-color: #421f70;
+            font-family: Arial, sans-serif;
+            overflow-y: scroll;
+        }
+        .search-container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: transparent;
+            border: none;
+        }
+        .search-box {
+            position: relative;
+            display: inline-block;
+        }
+        .search-container input[type="text"] {
+            width: 500px; /* Увеличиваем ширину поля ввода */
+            padding: 10px 40px 10px 10px; /* Оставляем место для кнопки */
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 30px;
+            box-sizing: border-box;
+        }
+        .search-container button {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            background: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .search-container button img {
+            width: 24px;
+            height: 24px;
+        }
+        .result {
+            margin-top: 20px;
+            color: rgb(163, 180, 180);
+            font-size: 30px;
+        }
+        #input {
+            color: azure;
+            font-size: 90px;
+        }
+        .scroll-top {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: #ddd;
+            color: black;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 18px;
+        }
+        .scroll-top:hover {
+            background-color: #555;
+            color: white;
+        }
+        .result img {
+            max-width: 450px;
+            max-height: 600px; /* Устанавливаем максимальную высоту изображения */
+            display: block;
+            margin: 20px auto;
+            overflow-y: scroll; /* Добавляем прокрутку для больших изображений */
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <label for="search-input" id="input">ФИЛЬМ, ГДЕ:</label>
+        <br>
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="Опишите фильм...">
+            <button onclick="searchMovie()">
+                <img src="https://s1.iconbird.com/ico/2013/9/450/w256h2561380453921Search256x25632.png" alt="Search">
+            </button>
+        </div>
+        <div class="result" id="result"></div>
+    </div>
+    <button onclick="topFunction()" id="scroll-top" class="scroll-top">▲ Наверх</button>
+    <script src="script.js"></script>
+    <script>
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            const scrollTopButton = document.getElementById("scroll-top");
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollTopButton.style.display = "block";
+            } else {
+                scrollTopButton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+</body>
+</html>
