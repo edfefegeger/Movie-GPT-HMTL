@@ -4,7 +4,6 @@ async function searchMovie() {
     const clearButton = document.getElementById('clear-result');
 
     resultDiv.innerHTML = '';
-    clearButton.style.display = 'none';
 
     if (!query) {
         resultDiv.textContent = 'Пожалуйста, введите описание фильма.';
@@ -56,7 +55,11 @@ async function searchMovie() {
                 titleElement.style.color = 'white';
                 resultDiv.appendChild(titleElement);
                 
-                clearButton.style.display = 'block'; // Показать кнопку "Убрать результат"
+                clearButton.style.textAlign = 'center';
+                clearButton.style.marginTop = '10px';
+                clearButton.style.fontSize = '20px';
+                clearButton.style.display = 'inline-block';
+                resultDiv.appendChild(clearButton);
             } else {
                 resultDiv.textContent = movieTitle + '\nИзображение не найдено.';
             }
